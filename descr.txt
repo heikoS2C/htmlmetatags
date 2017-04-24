@@ -1,0 +1,100 @@
+====== HtmlMetaTags Plugin ======
+
+---- plugin ----
+description: Adds some (open graph) meta tags to the html header (e.g. keywords, description or any others)
+author     : Soft2C.de
+email      : info@soft2c.de
+type       : Action, Syntax
+lastupdate : 2017-04-24
+compatible : 2016-06-26 "Elenor Of Tsort",2012-10-13 "Adora Belle",2013-05-10a "Weatherwax",Release 2013-12-08 "Binky",Release 2014-05-05e "Ponder Stibbons",Release 2014-09-29d "Hrun", 2015-08-10 "Detritus"
+tags       : html meta search seo info open graph
+ 
+downloadurl: http://www.soft2c.de/pub/htmlmetatagsV2.2.zip
+donationurl: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=GN27JNRYKUYTG
+----
+
+===== Description =====
+
+This plugin enriches the html page with all meta tags what you wont, e.g. keywords, description and any others.
+Some meta information are very usefull for web crawlers for indexing and categorizing the page.
+
+Extends with V2.0:
+This version allow you to add :
+  * open graph metatags like //og:description//, //og:image//...
+  * link to media file. tags must start with //media-//
+    * //media-og:image=(:wiki:image.jpg)//
+  * multiple calls to htmlmetatags all values will be added
+
+**Note:** The Initial version of this plugIn is not compatible to the new V2.xy. The difference of attribute to value splitter is changed from ':' to '='. \\
+
+<code>
+  {{htmlmetatags>metatag-keywords=(values) metatag-og:description=(open graph description.)}}
+</code>
+
+**Note:** Linebreaks can add inside the <nowiki>{{ }}</nowiki> without any trouble.
+<code>
+  {{htmlmetatags>metatag-keywords=(values)
+    metatag-og:description=(open graph description.)
+  }}
+</code>
+
+===== Syntax =====
+
+With the string ''%%{{htmlmetatags>...}}%%'' on the page level you activates the plugin. The leading string "metatag-" marks a tag for the web site. After this leading string followed the key from tag. In ''%%=(...)%%'' write the value of the tag.
+
+Also, the plugin is on page level.
+
+Example to activate the plugin on your page write:
+
+<code>
+{{htmlmetatags>metatag-mytag=(some usefull text)}}
+</code>
+
+The meta tag: //mytag// is any word. This word is the name of the new meta tag, e.g. keyword. Followed on this name is to write ''='' with ''%%('...')%%''. This brackets contains the text required for the value of the new meta tag.
+
+You can write more than once meta tag on the page separate by space.
+
+<code>
+{{htmlmetatags>metatag-robots=() 
+metatag-keywords=(apfel,bananne,birne) 
+metatag-description=(Allgemeiner Obstbauer)
+metatag-media-og:image=(:wiki:image.jpg)
+metatag-og:description=(anything else)
+metatag-og:any=(anything else 2)
+}}
+
+</code>
+
+The **result** on web page is:
+
+<code html>
+<meta name="robots" content="noindex,nofollow"/>
+<meta name="keywords" content="apfel,bananne,birne"/>
+<meta name="description" content="Allgemeiner Obstbauer"/>
+<meta property="og:image" content="http://localhost/lib/exe/fetch.php?media=wiki:image.jpg"/>
+<meta property="og:description" content="anything else"/>
+<meta property="og:any" content="anything else 2"/>
+</code>
+
+===== Installation =====
+
+Download the plugin at [[http://www.soft2c.de/pub/htmlmetatagsV2.2.zip|htmlmetatagsV2.2.zip]] and extract the zip file to the plugin folder on your dokuwiki.
+
+===== Further Informtions =====
+This section explains some usefully tips for using the plugin. Check your generated html code for the right meta tag and optimize it with this plugin. Crawlers (like google) collect their data by reading the the meta tag and then by the content. Of curse every crawler uses own algorithm for indexing the web pages.
+
+  * [[https://wiki.selfhtml.org/wiki/HTML/Kopfdaten/meta| baselines for html meta tags]]
+  * [[http://ogp.me| description for The Open Graph protocol]]
+  * [[http://www.suchradar.de/magazin/archiv/2013/4-2013/html-verbesserungen.php|tips for optimization your web page]]
+
+===== Change Log =====
+
+  * **2015-05-27** Initial release
+  * **2016-04-22** Change the date for "last Update"
+  * **2016-07-12** V2.0 add handling for open graph metatags (Eric Maeker <eric@maeker.fr>)
+  * **2017-02-08** V2.1 when no metadata is available then set/add this on page (with the given keys via this plugin)
+  * **2017-04-24** V2.2 make it compatible wit PHP 7
+
+===== FAQ =====
+
+===== Discussion =====
