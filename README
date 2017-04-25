@@ -3,7 +3,7 @@ htmlmetatags Plugin for DokuWiki
 Set html meta tags.
 
 All documentation for this plugin can be found at
-http://www.soft2c.de
+https://www.dokuwiki.org/plugin:htmlmetatags
 
 If you install this plugin manually, make sure it is installed in
 lib/plugins/htmlmetatags/ - if the folder is called different it
