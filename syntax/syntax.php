@@ -104,7 +104,7 @@ class syntax_plugin_htmlmetatags_syntax extends DokuWiki_Syntax_Plugin {
                  	      $content = ml($content, '', true, '&amp;', true);
                     }
                     // Send result to renderer
-                    if (!empty($content)) {
+                    if (!empty($content) && isset($renderer->meta['htmlmetatags'])) {
                       if ($name == "keywords") {
                         if (!empty($renderer->meta['htmlmetatags'][$name]))
                           $renderer->meta["htmlmetatags"][$name] .= ', '.$content;

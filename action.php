@@ -72,12 +72,11 @@ class action_plugin_htmlmetatags extends DokuWiki_Action_Plugin {
     public function handle_htmlmetatags(Doku_Event &$event, $param) {
     
       global $ID;
-      global $conf;
       if (empty($event->data)) return; // nothing to do for us
       
       $metadata = p_get_metadata($ID);
-      
-      $a = $metadata["htmlmetatags"];
+
+      $a = $metadata["htmlmetatags"] ?? '';
       if(empty($a)) return;
       
       foreach(array_keys($a) as $cur_key) {
