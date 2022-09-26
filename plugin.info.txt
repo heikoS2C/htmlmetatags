@@ -1,7 +1,7 @@
 base   htmlmetatags
 author Heiko Heinz
 email  heiko.heinz@soft2c.de
-date   2017-04-24
+date   2022-09-26
 name   htmlmetatags plugin
 desc   Set html and open graph meta tags.
-url    https://www.dokuwiki.org/plugin:htmlmetatags
+url    https://www.dokuwiki.org/plugin:htmlmetatags
