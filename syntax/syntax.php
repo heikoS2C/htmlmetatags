@@ -111,7 +111,7 @@ class syntax_plugin_htmlmetatags_syntax extends DokuWiki_Syntax_Plugin {
                         else
                           $renderer->meta["htmlmetatags"][$name] .= $content;
                       }
-                      else
+                      else if(isset($renderer->meta['htmlmetatags']))
                         $renderer->meta["htmlmetatags"][$name] .= $content;
                     }
                  }
