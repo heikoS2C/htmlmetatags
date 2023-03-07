@@ -85,6 +85,7 @@ class syntax_plugin_htmlmetatags_syntax extends DokuWiki_Syntax_Plugin {
  
         switch ($mode) {
           case 'metadata' :
+          	
               /* 
                * e.g.
                * data[0]="keywords=(apfel, bananne, birne) "
@@ -93,7 +94,6 @@ class syntax_plugin_htmlmetatags_syntax extends DokuWiki_Syntax_Plugin {
               for ($i=0;$i<sizeof($data);$i++) {
                  $mt = explode("=", $data[$i]);
                  $size = sizeof($mt);
- 
                  // If attributes as value
                  if(sizeof($mt)==2){
                  	  $name = trim($mt[0]);
@@ -102,9 +102,9 @@ class syntax_plugin_htmlmetatags_syntax extends DokuWiki_Syntax_Plugin {
                  	  if (substr($name, 0, 6) === 'media-') {
                  	      $name = substr($name, 6);
                  	      $content = ml($content, '', true, '&amp;', true);
-                    }
-                    // Send result to renderer
-                    if (!empty($content) && isset($renderer->meta['htmlmetatags'])) {
+                    }                   
+                    // Send result to renderer                   
+                    if (!empty($content)) {
                       if ($name == "keywords") {
                         if (!empty($renderer->meta['htmlmetatags'][$name]))
                           $renderer->meta["htmlmetatags"][$name] .= ', '.$content;

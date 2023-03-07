@@ -41,6 +41,7 @@ class action_plugin_htmlmetatags extends DokuWiki_Action_Plugin {
   */
   
     function replaceMeta(&$pageArray, $name, $value) {
+      dbg($name .' - '. $value, TRUE); // string representation
     // Override dokuwiki default meta tags
       $found = False;
       foreach($pageArray['meta'] as $k => $v) {
