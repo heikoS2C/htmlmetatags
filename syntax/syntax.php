@@ -81,7 +81,7 @@ class syntax_plugin_htmlmetatags_syntax extends DokuWiki_Syntax_Plugin {
 	 *
 	 * usage: {{htmlmetatags>metatag-keywords:(apfel,bananne,birne) metatag-description:(Allgemeiner Obstbauer)}}
 	 *
-	 * @param string $mode
+	 * @param string $format
 	 *        	Renderer mode (supported modes: xhtml)
 	 * @param Doku_Renderer $renderer
 	 *        	The renderer
@@ -89,10 +89,8 @@ class syntax_plugin_htmlmetatags_syntax extends DokuWiki_Syntax_Plugin {
 	 *        	The data from the handler() function
 	 * @return bool If rendering was successful.
 	 */
-	public function render($mode, Doku_Renderer $renderer, $data) {
-		global $ID;
-
-		switch ($mode) {
+	public function render($format, Doku_Renderer $renderer, $data) {
+		switch ($format) {
 			case 'metadata' :
 				/*
 				 * e.g.
@@ -101,7 +99,6 @@ class syntax_plugin_htmlmetatags_syntax extends DokuWiki_Syntax_Plugin {
 				 */
 				for ($i = 0; $i < sizeof ( $data ); $i ++) {
 					$mt = explode ( "=", $data [$i] );
-					$size = sizeof ( $mt );
 					// If attributes as value
 					if (sizeof ( $mt ) == 2) {
 						$name = trim ( $mt [0] );
