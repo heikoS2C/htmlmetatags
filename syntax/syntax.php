@@ -33,7 +33,7 @@ class syntax_plugin_htmlmetatags_syntax extends DokuWiki_Syntax_Plugin {
 	public function getSort() {
 		return 110;
 	}
-	
+
 	/**
 	 * Connect lookup pattern to lexer.
 	 *
@@ -46,11 +46,11 @@ class syntax_plugin_htmlmetatags_syntax extends DokuWiki_Syntax_Plugin {
 		}
 		// $this->Lexer->addEntryPattern('<FIXME>',$mode,'plugin_htmlmetatags_syntax');
 	}
-	
+
 	// public function postConnect() {
 	// $this->Lexer->addExitPattern('</FIXME>','plugin_htmlmetatags_syntax');
 	// }
-	
+
 	/**
 	 * Handle matches of the htmlmetatags syntax
 	 *
@@ -67,20 +67,20 @@ class syntax_plugin_htmlmetatags_syntax extends DokuWiki_Syntax_Plugin {
 	public function handle($match, $state, $pos, Doku_Handler $handler) {
 		// Remove all linefeeds before parsing attributes
 		$match = str_replace ( PHP_EOL, "", $match );
-		
+
 		// remove the plugin-activator string
 		$match = str_replace ( "{{htmlmetatags>", "", $match );
 		$match = str_replace ( "}}", "", $match );
-		
+
 		// Explode match into attributes array using 'metatag-' as mask
 		return explode ( "metatag-", $match );
 	}
-	
+
 	/**
 	 * Render xhtml output or metadata
 	 *
 	 * usage: {{htmlmetatags>metatag-keywords:(apfel,bananne,birne) metatag-description:(Allgemeiner Obstbauer)}}
-	 * 
+	 *
 	 * @param string $mode
 	 *        	Renderer mode (supported modes: xhtml)
 	 * @param Doku_Renderer $renderer
@@ -91,16 +91,15 @@ class syntax_plugin_htmlmetatags_syntax extends DokuWiki_Syntax_Plugin {
 	 */
 	public function render($mode, Doku_Renderer $renderer, $data) {
 		global $ID;
-		
+
 		switch ($mode) {
 			case 'metadata' :
-          	
-              /* 
-               * e.g.
-               * data[0]="keywords=(apfel, bananne, birne) "
-               * data[1]="og:description=Allgemeiner Obstbauer"
-               */
-              for($i = 0; $i < sizeof ( $data ); $i ++) {
+				/*
+				 * e.g.
+				 * data[0]="keywords=(apfel, bananne, birne) "
+				 * data[1]="og:description=Allgemeiner Obstbauer"
+				 */
+				for ($i = 0; $i < sizeof ( $data ); $i ++) {
 					$mt = explode ( "=", $data [$i] );
 					$size = sizeof ( $mt );
 					// If attributes as value
@@ -129,7 +128,7 @@ class syntax_plugin_htmlmetatags_syntax extends DokuWiki_Syntax_Plugin {
 				}
 				return true;
 		}
-		
+
 		return false;
 	}
 }
